@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -58,10 +58,10 @@ model Thread {
 model Message {
   id           String        @id @default(uuid())
   threadId     String        @map("thread_id")
-  role         MessageRole
+  role         String        // Changed from enum to string
   content      String
-  thinkingTrace Json?        @map("thinking_trace")
-  metadata     Json?
+  thinkingTrace String?       @map("thinking_trace") // Changed from Json to String
+  metadata     String?       // Changed from Json to String
   createdAt    DateTime      @default(now()) @map("created_at")
 
   // Relations
@@ -78,7 +78,7 @@ model Source {
   title     String?
   snippet   String?
   domain    String?
-  metadata  Json?
+  metadata  String?  // Changed from Json to String
   createdAt DateTime @default(now()) @map("created_at")
 
   // Relations
@@ -92,9 +92,8 @@ model Memory {
   userId    String     @map("user_id")
   threadId  String?    @map("thread_id")
   content   String
-  embedding Float[]?   // For pgvector support
-  type      MemoryType
-  metadata  Json?
+  type      String     // Changed from enum to string
+  metadata  String?    // Changed from Json to String
   createdAt DateTime   @default(now()) @map("created_at")
 
   // Relations
@@ -107,7 +106,7 @@ model Memory {
 model AgentSession {
   id           String    @id @default(uuid())
   threadId     String    @map("thread_id")
-  checkpoint   Json
+  checkpoint   String    // Changed from Json to String
   status       String    @default("active")
   lastActivity DateTime  @default(now()) @map("last_activity")
   createdAt    DateTime  @default(now()) @map("created_at")
@@ -116,15 +115,4 @@ model AgentSession {
   @@map("agent_sessions")
 }
 
-enum MessageRole {
-  USER
-  ASSISTANT
-  SYSTEM
-}
-
-enum MemoryType {
-  CONVERSATION
-  FACT
-  INSIGHT
-  DOCUMENT
-}
+// Removed enums - using strings instead for SQLite compatibility

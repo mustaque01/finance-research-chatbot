@@ -11,7 +11,8 @@ export class MemoryService {
     private prisma: PrismaService,
     private configService: ConfigService,
   ) {
-    this.initializeRedis();
+    // Temporarily disabled Redis for development
+    // this.initializeRedis();
   }
 
   private async initializeRedis() {
@@ -87,7 +88,6 @@ export class MemoryService {
           userId,
           content: {
             contains: query,
-            mode: 'insensitive',
           },
         },
         orderBy: {

@@ -39,7 +39,7 @@ export class ChatService {
         threadId,
         role: 'USER',
         content: message,
-        metadata,
+        metadata: JSON.stringify(metadata || {}),
       },
     });
 
@@ -77,14 +77,14 @@ export class ChatService {
           role: 'ASSISTANT',
           content: agentResponse.content,
           thinkingTrace: agentResponse.thinkingTrace,
-          metadata: agentResponse.metadata,
+          metadata: JSON.stringify(agentResponse.metadata || {}),
           sources: {
             create: agentResponse.sources?.map((source: any) => ({
               url: source.url,
               title: source.title,
               snippet: source.snippet,
               domain: source.domain,
-              metadata: source.metadata,
+              metadata: JSON.stringify(source.metadata || {}),
             })) || [],
           },
         },
@@ -113,10 +113,10 @@ export class ChatService {
           threadId,
           role: 'ASSISTANT',
           content: 'I apologize, but I encountered an error while processing your request. Please try again.',
-          metadata: {
+          metadata: JSON.stringify({
             error: true,
             errorMessage: error.message,
-          },
+          }),
         },
       });
 
@@ -142,7 +142,7 @@ export class ChatService {
         threadId,
         role: 'USER',
         content: message,
-        metadata,
+        metadata: JSON.stringify(metadata || {}),
       },
     });
 
@@ -179,9 +179,14 @@ export class ChatService {
       let sources: any[] = [];
       let assistantMessageId: string | null = null;
 
-      // Process streaming response
-      response.data.on('data', (chunk: Buffer) => {
-        const lines = chunk.toString().split('\n');
+      // Process streaming response using async iteration
+      const stream = response.data;
+      let buffer = '';
+      
+      for await (const chunk of stream) {
+        buffer += chunk.toString();
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || ''; // Keep incomplete line in buffer
         
         for (const line of lines) {
           if (line.startsWith('data: ')) {
@@ -222,13 +227,7 @@ export class ChatService {
             }
           }
         }
-      });
-
-      // Wait for stream to complete
-      await new Promise((resolve, reject) => {
-        response.data.on('end', resolve);
-        response.data.on('error', reject);
-      });
+      }
 
       // Save final assistant message
       const assistantMessage = await this.prisma.message.create({
@@ -236,15 +235,15 @@ export class ChatService {
           threadId,
           role: 'ASSISTANT',
           content: assistantContent,
-          thinkingTrace,
-          metadata: { streaming: true },
+          thinkingTrace: JSON.stringify(thinkingTrace || {}),
+          metadata: JSON.stringify({ streaming: true }),
           sources: {
             create: sources.map((source) => ({
               url: source.url,
               title: source.title,
               snippet: source.snippet,
               domain: source.domain,
-              metadata: source.metadata,
+              metadata: JSON.stringify(source.metadata || {}),
             })),
           },
         },

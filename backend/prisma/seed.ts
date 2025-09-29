@@ -47,12 +47,9 @@ async function main() {
         threadId: sampleThread.id,
         role: 'ASSISTANT',
         content: 'Hello! I\'d be happy to help you analyze HDFC Bank. I can provide insights on their financial performance, compare them with peers, analyze their stock valuation, and more. What specific aspect would you like to explore?',
-        metadata: {
-          demo: true,
-        },
+        metadata: JSON.stringify({ demo: true }),
       },
     ],
-    skipDuplicates: true,
   });
 
   console.log('✅ Created sample messages');
@@ -65,22 +62,21 @@ async function main() {
         threadId: sampleThread.id,
         content: 'User is interested in HDFC Bank analysis',
         type: 'CONVERSATION',
-        metadata: {
+        metadata: JSON.stringify({
           topic: 'banking',
           entity: 'HDFC Bank',
-        },
+        }),
       },
       {
         userId: demoUser.id,
         content: 'HDFC Bank is one of India\'s largest private sector banks',
         type: 'FACT',
-        metadata: {
+        metadata: JSON.stringify({
           entity: 'HDFC Bank',
           category: 'banking',
-        },
+        }),
       },
     ],
-    skipDuplicates: true,
   });
 
   console.log('✅ Created sample memories');
