@@ -1,0 +1,130 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  firstName String?
+  lastName  String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  sessions Session[]
+  threads  Thread[]
+  memories Memory[]
+
+  @@map("users")
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  token     String   @unique
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model Thread {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  title     String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages Message[]
+  memories Memory[]
+
+  @@map("threads")
+}
+
+model Message {
+  id           String        @id @default(uuid())
+  threadId     String        @map("thread_id")
+  role         MessageRole
+  content      String
+  thinkingTrace Json?        @map("thinking_trace")
+  metadata     Json?
+  createdAt    DateTime      @default(now()) @map("created_at")
+
+  // Relations
+  thread  Thread   @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  sources Source[]
+
+  @@map("messages")
+}
+
+model Source {
+  id        String   @id @default(uuid())
+  messageId String   @map("message_id")
+  url       String
+  title     String?
+  snippet   String?
+  domain    String?
+  metadata  Json?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  // Relations
+  message Message @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  @@map("sources")
+}
+
+model Memory {
+  id        String     @id @default(uuid())
+  userId    String     @map("user_id")
+  threadId  String?    @map("thread_id")
+  content   String
+  embedding Float[]?   // For pgvector support
+  type      MemoryType
+  metadata  Json?
+  createdAt DateTime   @default(now()) @map("created_at")
+
+  // Relations
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  thread Thread? @relation(fields: [threadId], references: [id], onDelete: SetNull)
+
+  @@map("memories")
+}
+
+model AgentSession {
+  id           String    @id @default(uuid())
+  threadId     String    @map("thread_id")
+  checkpoint   Json
+  status       String    @default("active")
+  lastActivity DateTime  @default(now()) @map("last_activity")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  expiresAt    DateTime? @map("expires_at")
+
+  @@map("agent_sessions")
+}
+
+enum MessageRole {
+  USER
+  ASSISTANT
+  SYSTEM
+}
+
+enum MemoryType {
+  CONVERSATION
+  FACT
+  INSIGHT
+  DOCUMENT
+}
