@@ -1,0 +1,231 @@
+# =======================
+# PYTHON AGENT SPECIFIC
+# =======================
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# =======================
+# AI & ML SPECIFIC
+# =======================
+# Model files and checkpoints
+models/
+checkpoints/
+*.model
+*.pkl
+*.joblib
+*.h5
+*.ckpt
+*.pt
+*.pth
+
+# Training data and datasets
+data/
+datasets/
+training-data/
+*.csv
+*.json
+*.jsonl
+*.parquet
+
+# Vector databases and embeddings
+embeddings/
+vector-store/
+*.faiss
+*.index
+*.vec
+chroma_db/
+pinecone_cache/
+
+# =======================
+# LANGCHAIN & LANGGRAPH
+# =======================
+# LangChain cache
+.langchain/
+langchain_cache/
+
+# LangGraph checkpoints
+checkpoints/
+graph_checkpoints/
+*.checkpoint
+
+# Agent memory files
+agent_memory/
+memory_store/
+*.memory
+
+# =======================
+# WEB SCRAPING & SEARCH
+# =======================
+# Browser files
+chromedriver
+geckodriver
+*.exe
+
+# Playwright browsers
+playwright/
+.playwright/
+
+# Scraped content cache
+scraped_content/
+web_cache/
+*.scraped
+
+# Search results cache
+search_cache/
+*.search_results
+
+# =======================
+# API KEYS & SECRETS
+# =======================
+# API key files
+api_keys.py
+secrets.py
+credentials.json
+service-account.json
+
+# Authentication tokens
+*.token
+access_token.txt
+refresh_token.txt
+
+# =======================
+# FINANCIAL DATA
+# =======================
+# Downloaded financial data
+financial_data/
+stock_data/
+market_data/
+*.csv
+*.xlsx
+*.json
+
+# API response cache
+api_cache/
+yahoo_finance_cache/
+alpha_vantage_cache/
+fmp_cache/
+
+# =======================
+# LOGS & MONITORING
+# =======================
+# Application logs
+logs/
+*.log
+agent.log
+research.log
+error.log
+
+# Debug files
+debug/
+*.debug
+
+# Performance monitoring
+profiling/
+*.prof
+
+# =======================
+# TESTING
+# =======================
+# Test files
+test_data/
+test_results/
+test_cache/
+
+# pytest cache
+.pytest_cache/
+.cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+coverage.xml
+
+# =======================
+# DEVELOPMENT
+# =======================
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+
+# =======================
+# RESEARCH & ANALYSIS
+# =======================
+# Research outputs
+research_outputs/
+analysis_results/
+reports/
+generated_reports/
+
+# Thinking traces
+thinking_traces/
+reasoning_logs/
+
+# Source materials
+sources/
+references/
+citations_cache/
+
+# =======================
+# DOCKER & DEPLOYMENT
+# =======================
+# Docker volumes
+docker_volumes/
+
+# Local development files
+local_config.py
+development_settings.py
+
+# =======================
+# MEMORY & STORAGE
+# =======================
+# Redis dumps
+dump.rdb
+
+# SQLite databases
+*.sqlite
+*.sqlite3
+*.db
+
+# Backup files
+*.bak
+*.backup
+
+# =======================
+# SYSTEM FILES
+# =======================
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archive files
+*.tar.gz
+*.zip
+*.rar

@@ -1,0 +1,141 @@
+# =======================
+# BACKEND SPECIFIC
+# =======================
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Build output
+dist/
+build/
+
+# Dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =======================
+# NESTJS SPECIFIC
+# =======================
+# Compiled files
+*.js.map
+*.d.ts
+
+# Test coverage
+coverage/
+.nyc_output
+
+# =======================
+# PRISMA SPECIFIC
+# =======================
+# Generated Prisma client
+/prisma/generated/
+
+# Database files
+*.sqlite
+*.sqlite3
+*.db
+
+# Migration snapshots (keep migrations but not snapshots)
+/prisma/migrations/*/snapshot.json
+
+# Database backup files
+*.sql
+*.dump
+*.backup
+
+# =======================
+# AUTHENTICATION & SECRETS
+# =======================
+# JWT private keys
+*.key
+*.pem
+private-key.txt
+jwt-secret.txt
+
+# Session files
+sessions/
+*.session
+
+# Certificate files
+*.crt
+*.cer
+*.p12
+*.pfx
+
+# =======================
+# UPLOADS & USER DATA
+# =======================
+# File uploads
+uploads/
+public/uploads/
+static/uploads/
+temp-uploads/
+
+# User generated content
+user-content/
+attachments/
+
+# =======================
+# CACHE & TEMP
+# =======================
+# Cache directories
+.cache/
+.tmp/
+tmp/
+
+# Temporary files
+*.tmp
+*.temp
+
+# =======================
+# DEVELOPMENT
+# =======================
+# IDE files
+.vscode/settings.json
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Hot reload
+.hot-reload/
+
+# =======================
+# TESTING
+# =======================
+# Test databases
+test.db
+test.sqlite
+test-*.db
+
+# Test uploads
+test-uploads/
+
+# Jest cache
+.jest/
+
+# =======================
+# MONITORING & DEBUG
+# =======================
+# Memory dumps
+*.heapsnapshot
+
+# Debug files
+*.debug
+
+# Performance logs
+benchmark-results/
+performance-logs/
+
+# Health check temp files
+health-check-*.json

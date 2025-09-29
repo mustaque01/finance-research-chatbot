@@ -1,0 +1,76 @@
+# =======================
+# SCRIPTS SPECIFIC
+# =======================
+# Log files from setup scripts
+setup.log
+installation.log
+deploy.log
+
+# Temporary script files
+*.tmp
+temp_*.ps1
+temp_*.sh
+
+# =======================
+# TESTING OUTPUTS
+# =======================
+# E2E test results
+test-results/
+test-outputs/
+e2e-screenshots/
+
+# Performance test data
+performance-results/
+load-test-data/
+
+# =======================
+# DEPLOYMENT
+# =======================
+# Deployment artifacts
+deployment-artifacts/
+*.tar.gz
+*.zip
+
+# Kubernetes secrets
+k8s-secrets/
+*.secret.yaml
+
+# Terraform state
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# =======================
+# MONITORING
+# =======================
+# Health check logs
+health-*.log
+status-*.json
+
+# Monitoring data
+monitoring-data/
+metrics/
+
+# =======================
+# BACKUP & RECOVERY
+# =======================
+# Database backups
+backup_*.sql
+*.dump
+recovery_*.sql
+
+# Configuration backups
+config_backup_*/
+settings_backup_*/
+
+# =======================
+# DEVELOPMENT
+# =======================
+# Local development overrides
+local_*.ps1
+local_*.sh
+dev_*.ps1
+
+# User-specific scripts
+user_*.ps1
+personal_*.sh

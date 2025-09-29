@@ -1,0 +1,495 @@
+# =======================
+# SECURITY & PRIVACY
+# =======================
+# Environment variables and secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# API Keys and secrets
+**/secrets/
+**/*.key
+**/*.pem
+**/*.p12
+**/*.pfx
+config/secrets.yml
+config/database.yml
+
+# =======================
+# NODE.JS & NPM
+# =======================
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons
+build/Release
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# =======================
+# NEXT.JS
+# =======================
+# Next.js build output
+.next/
+out/
+
+# Next.js cache
+.next/
+.swc/
+
+# Vercel deployment
+.vercel
+
+# =======================
+# PYTHON
+# =======================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# =======================
+# DATABASE
+# =======================
+# Database files
+*.sqlite
+*.sqlite3
+*.db
+*.sql
+
+# Database dumps
+*.dump
+*.bak
+
+# PostgreSQL
+*.backup
+postgresql.conf
+pg_hba.conf
+
+# Prisma
+prisma/dev.db*
+prisma/migrations/*/migration.sql
+
+# =======================
+# DOCKER & CONTAINERS
+# =======================
+# Docker volumes data
+docker-data/
+postgres-data/
+redis-data/
+
+# Docker override files
+docker-compose.override.yml
+docker-compose.*.yml
+!docker-compose.yml
+
+# =======================
+# LOGS & MONITORING
+# =======================
+# Log files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Application logs
+app.log
+error.log
+access.log
+combined.log
+
+# PM2 logs
+.pm2/
+
+# =======================
+# CACHE & TEMP FILES
+# =======================
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Cache directories
+.cache/
+.tmp/
+tmp/
+temp/
+
+# =======================
+# IDE & EDITORS
+# =======================
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Atom
+.atom/
+
+# =======================
+# TESTING
+# =======================
+# Test coverage
+coverage/
+.coverage
+.coverage.*
+*.lcov
+.nyc_output
+
+# Test results
+test-results/
+test-reports/
+junit.xml
+
+# =======================
+# BUILD & DEPLOYMENT
+# =======================
+# Build directories
+build/
+dist/
+out/
+
+# Static files
+static/
+public/uploads/
+
+# Compiled assets
+*.min.js
+*.min.css
+
+# Webpack
+.webpack/
+
+# Rollup
+.rollup.cache/
+
+# Parcel
+.parcel-cache/
+
+# =======================
+# BACKUP & ARCHIVES
+# =======================
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+
+# Archives
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# =======================
+# APPLICATION SPECIFIC
+# =======================
+# Uploads directory
+uploads/
+user-uploads/
+
+# Generated documentation
+docs/build/
+docs/_build/
+
+# Certificate files
+*.crt
+*.cer
+*.p12
+*.pfx
+
+# Configuration overrides
+config.local.json
+settings.local.json
+
+# Memory dumps
+*.heapsnapshot
+
+# Performance monitoring
+.clinic/
+profile/
+
+# Redis dumps
+dump.rdb
+
+# Vector database files
+*.faiss
+*.index
+
+# Model files (if storing locally)
+models/
+checkpoints/
+
+# =======================
+# PACKAGE MANAGERS
+# =======================
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# pnpm
+.pnpm-store/
+
+# Rush
+common/temp/
+
+# =======================
+# MISCELLANEOUS
+# =======================
+# Selenium
+chromedriver
+geckodriver
+*.exe
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
+# MacOS
+.AppleDouble
+.LSOverride
+
+# Windows
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Local development files
+.local/
+local/
+scratch/
+
+# TODO and notes
+TODO.md
+NOTES.md
+scratch.txt

@@ -1,0 +1,134 @@
+# =======================
+# FRONTEND SPECIFIC
+# =======================
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Dependencies
+node_modules/
+
+# Production build
+.next/
+out/
+build/
+dist/
+
+# =======================
+# NEXT.JS SPECIFIC
+# =======================
+# Next.js cache
+.next/
+.swc/
+
+# Static export
+out/
+
+# Vercel deployment files
+.vercel
+
+# =======================
+# DEVELOPMENT
+# =======================
+# Development cache
+.cache/
+.parcel-cache/
+
+# Hot reload
+.hot-reload/
+
+# Storybook build outputs
+storybook-static/
+
+# =======================
+# USER UPLOADS & ASSETS
+# =======================
+# User uploaded files
+public/uploads/
+public/user-content/
+public/temp/
+
+# Generated images
+public/generated/
+public/screenshots/
+
+# =======================
+# TESTING
+# =======================
+# Test coverage
+coverage/
+.nyc_output
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
+# Jest
+.jest/
+
+# =======================
+# ANALYTICS & TRACKING
+# =======================
+# Analytics data
+analytics/
+tracking-data/
+
+# User session data
+session-data/
+user-sessions/
+
+# =======================
+# CACHE & PERFORMANCE
+# =======================
+# Bundle analyzer
+.bundle-analyzer/
+
+# Performance monitoring
+performance-logs/
+*.perf
+
+# Service worker cache
+sw-cache/
+
+# =======================
+# LOGS
+# =======================
+# Application logs
+*.log
+logs/
+
+# Debug logs
+debug.log
+error.log
+
+# =======================
+# TEMPORARY FILES
+# =======================
+# Temp directories
+temp/
+tmp/
+.tmp/
+
+# Backup files
+*.backup
+*.bak
+
+# =======================
+# IDE & EDITOR
+# =======================
+# VSCode
+.vscode/settings.json
+
+# WebStorm
+.idea/
+
+# =======================
+# OS FILES
+# =======================
+.DS_Store
+Thumbs.db
+desktop.ini
