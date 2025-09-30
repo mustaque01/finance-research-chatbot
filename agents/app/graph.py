@@ -14,8 +14,7 @@ from langchain_core.messages import BaseMessage, HumanMessage, AIMessage
 from app.agents.researcher import ResearcherAgent
 from app.agents.analyzer import AnalyzerAgent
 from app.agents.synthesizer import SynthesizerAgent
-from app.memory.short_term import ShortTermMemory
-from app.memory.long_term import LongTermMemory
+from app.memory.manager import MemoryManager, get_memory_manager
 from app.core.logging import get_logger
 
 logger = get_logger(__name__)
@@ -54,8 +53,7 @@ def create_research_graph():
     researcher = ResearcherAgent()
     analyzer = AnalyzerAgent()
     synthesizer = SynthesizerAgent()
-    short_term_memory = ShortTermMemory()
-    long_term_memory = LongTermMemory()
+    memory_manager = None  # Will be initialized async
     
     async def analyze_query_node(state: ResearchState) -> ResearchState:
         """Analyze the user query to understand intent and requirements"""
@@ -303,24 +301,21 @@ def create_research_graph():
         logger.info("Executing memory update node", thread_id=state.get("thread_id"))
         
         try:
-            # Update short-term memory (conversation context)
-            await short_term_memory.store_conversation(
+            # Initialize memory manager if not done yet
+            nonlocal memory_manager
+            if memory_manager is None:
+                memory_manager = await get_memory_manager()
+            
+            # Store complete conversation exchange
+            await memory_manager.store_conversation_exchange(
                 thread_id=state["thread_id"],
                 user_id=state["user_id"],
                 query=state["query"],
                 response=state["final_response"],
                 sources=state["sources"],
-                analysis=state["analysis_results"]
+                analysis=state["analysis_results"],
+                insights=state["analysis_results"].get("key_insights", [])
             )
-            
-            # Update long-term memory (insights and facts)
-            if state["analysis_results"].get("key_insights"):
-                await long_term_memory.store_insights(
-                    user_id=state["user_id"],
-                    thread_id=state["thread_id"],
-                    insights=state["analysis_results"]["key_insights"],
-                    entities=state["query_analysis"].get("entities", [])
-                )
             
             state["nodes_executed"] = state.get("nodes_executed", []) + ["update_memory"]
             
