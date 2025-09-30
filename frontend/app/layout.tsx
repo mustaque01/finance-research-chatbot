@@ -1,5 +1,5 @@
 import './globals.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -17,14 +17,19 @@ export const metadata: Metadata = {
   description: 'AI-powered financial research assistant with deep analysis and cited sources',
   keywords: ['finance', 'research', 'AI', 'chatbot', 'investment', 'analysis'],
   authors: [{ name: 'Finance Research Team' }],
-  viewport: 'width=device-width, initial-scale=1',
   robots: 'index, follow',
+  metadataBase: new URL('http://localhost:3000'),
   openGraph: {
     title: 'Finance Research Chatbot',
     description: 'AI-powered financial research assistant',
     type: 'website',
     locale: 'en_US',
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({
