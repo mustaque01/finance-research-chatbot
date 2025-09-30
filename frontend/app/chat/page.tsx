@@ -18,6 +18,7 @@ import {
 } from '@mui/material';
 import { Send, Logout } from '@mui/icons-material';
 import { useAuth } from '@/lib/context/AuthContext';
+import { chatAPI, threadsAPI } from '@/lib/api';
 
 interface Message {
   id: string;
@@ -30,6 +31,7 @@ export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [threadId, setThreadId] = useState<string | null>(null);
   
   const { user, logout } = useAuth();
   const router = useRouter();
@@ -37,11 +39,23 @@ export default function ChatPage() {
   useEffect(() => {
     if (!user) {
       router.push('/login');
+    } else {
+      // Create a new thread when user enters chat
+      initializeThread();
     }
   }, [user, router]);
 
+  const initializeThread = async () => {
+    try {
+      const response = await threadsAPI.create({ title: 'New Chat Session' });
+      setThreadId(response.data.id);
+    } catch (error) {
+      console.error('Failed to create thread:', error);
+    }
+  };
+
   const handleSend = async () => {
-    if (!input.trim()) return;
+    if (!input.trim() || !threadId) return;
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -55,20 +69,33 @@ export default function ChatPage() {
     setLoading(true);
 
     try {
-      // TODO: Implement actual API call to chat service
-      // For now, just simulate a response
-      setTimeout(() => {
-        const botMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          content: `I received your message: "${userMessage.content}". The chat functionality is being set up and will connect to the backend API soon.`,
-          isUser: false,
-          timestamp: new Date(),
-        };
-        setMessages(prev => [...prev, botMessage]);
-        setLoading(false);
-      }, 1000);
-    } catch (error) {
+      // Make actual API call to chat service
+      const response = await chatAPI.sendMessage({
+        message: input,
+        threadId: threadId,
+        metadata: {}
+      });
+
+      const botMessage: Message = {
+        id: response.data.id || (Date.now() + 1).toString(),
+        content: response.data.message || response.data.content || 'Sorry, I could not process your request.',
+        isUser: false,
+        timestamp: new Date(),
+      };
+      
+      setMessages(prev => [...prev, botMessage]);
+    } catch (error: any) {
       console.error('Chat error:', error);
+      
+      // Show error message to user
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        content: `Sorry, there was an error processing your request: ${error.response?.data?.message || error.message || 'Unknown error'}`,
+        isUser: false,
+        timestamp: new Date(),
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
       setLoading(false);
     }
   };
