@@ -158,7 +158,8 @@ async def stream_chat(request: ChatRequest) -> StreamingResponse:
             logger.error("Error in streaming chat",
                         error=str(e),
                         thread_id=request.thread_id)
-            yield f"data: {json.dumps({'type': 'error', 'content': f'Error: {str(e)'})}\n\n"
+            error_msg = f"Error: {str(e)}"
+            yield f"data: {json.dumps({'type': 'error', 'content': error_msg})}\n\n"
     
     return StreamingResponse(
         generate_stream(),

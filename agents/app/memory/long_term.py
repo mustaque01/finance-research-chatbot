@@ -16,7 +16,7 @@ except ImportError:
     SENTENCE_TRANSFORMERS_AVAILABLE = False
 
 try:
-    import pinecone
+    from pinecone import Pinecone, ServerlessSpec
     PINECONE_AVAILABLE = True
 except ImportError:
     PINECONE_AVAILABLE = False
@@ -90,23 +90,11 @@ class LongTermMemory:
                     
                     self.vector_db = pc.Index(settings.pinecone_index_name)
                     
-                except ImportError:
-                    # Fallback to older API
-                    pinecone.init(
-                        api_key=settings.pinecone_api_key,
-                        environment=settings.pinecone_environment or "gcp-starter"
-                    )
-                    
-                    # Create or get index
-                    index_name = settings.pinecone_index_name
-                    if index_name not in pinecone.list_indexes():
-                        pinecone.create_index(
-                            name=index_name,
-                            dimension=384,  # all-MiniLM-L6-v2 dimension
-                            metric="cosine"
-                        )
-                    
-                    self.vector_db = pinecone.Index(index_name)
+                except Exception as e:
+                    logger.error(f"Failed to initialize Pinecone: {e}")
+                    self.vector_db_type = "mock"
+                    self.vector_db = None
+                    return
                 
                 self.vector_db_type = "pinecone"
                 logger.info("✅ Pinecone vector database initialized successfully", 
