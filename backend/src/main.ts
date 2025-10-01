@@ -7,7 +7,19 @@ import * as compression from 'compression';
 import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  try {
+    // Add process error handlers
+    process.on('uncaughtException', (error) => {
+      console.error('Uncaught Exception:', error);
+      process.exit(1);
+    });
+
+    process.on('unhandledRejection', (reason, promise) => {
+      console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+      process.exit(1);
+    });
+
+    const app = await NestFactory.create(AppModule);
 
   // Security middleware
   app.use(helmet());
@@ -51,14 +63,7 @@ async function bootstrap() {
     SwaggerModule.setup('api/docs', app, document);
   }
 
-  // Health check endpoint
-  app.use('/health', (req, res) => {
-    res.status(200).json({
-      status: 'ok',
-      timestamp: new Date().toISOString(),
-      service: 'finance-research-backend',
-    });
-  });
+  // Health check endpoint - removing from here, will add proper controller
 
   const port = process.env.PORT || 3001;
   await app.listen(port);
@@ -66,6 +71,10 @@ async function bootstrap() {
   console.log(`🚀 Finance Research Backend is running on: http://localhost:${port}`);
   console.log(`📚 API Documentation: http://localhost:${port}/api/docs`);
   console.log(`💚 Health Check: http://localhost:${port}/health`);
+  } catch (error) {
+    console.error('Failed to start application:', error);
+    process.exit(1);
+  }
 }
 
 bootstrap();

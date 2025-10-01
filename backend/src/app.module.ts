@@ -11,6 +11,7 @@ import { ThreadsModule } from './threads/threads.module';
 import { ChatModule } from './chat/chat.module';
 import { MemoryModule } from './memory/memory.module';
 import { AgentModule } from './agent/agent.module';
+import { HealthController } from './health/health.controller';
 
 // Configuration validation
 import * as Joi from 'joi';
@@ -61,6 +62,7 @@ import * as Joi from 'joi';
     MemoryModule,
     AgentModule,
   ],
+  controllers: [HealthController],
   providers: [
     {
       provide: APP_GUARD,
