@@ -2,9 +2,9 @@ import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-const helmet = require('helmet');
-import * as compression from 'compression';
-import * as cookieParser from 'cookie-parser';
+import helmet from 'helmet';
+import compression from 'compression';
+import cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   try {
@@ -65,12 +65,29 @@ async function bootstrap() {
 
   // Health check endpoint - removing from here, will add proper controller
 
+  // Add request logging middleware
+  app.use((req, res, next) => {
+    console.log(`🔄 ${new Date().toISOString()} - ${req.method} ${req.url}`);
+    
+    // Add error handling for responses
+    res.on('error', (err) => {
+      console.error('🚨 Response error:', err);
+    });
+    
+    // Log when response finishes
+    res.on('finish', () => {
+      console.log(`✅ ${req.method} ${req.url} - Status: ${res.statusCode}`);
+    });
+    
+    next();
+  });
+
   const port = process.env.PORT || 3001;
   await app.listen(port);
 
   console.log(`🚀 Finance Research Backend is running on: http://localhost:${port}`);
   console.log(`📚 API Documentation: http://localhost:${port}/api/docs`);
-  console.log(`💚 Health Check: http://localhost:${port}/health`);
+  console.log(`💚 Health Check: http://localhost:${port}/api/v1/health`);
   } catch (error) {
     console.error('Failed to start application:', error);
     process.exit(1);
