@@ -77,8 +77,8 @@ export default function ChatPage() {
       });
 
       const botMessage: Message = {
-        id: response.data.id || (Date.now() + 1).toString(),
-        content: response.data.message || response.data.content || 'Sorry, I could not process your request.',
+        id: response.data.assistantMessage?.id || (Date.now() + 1).toString(),
+        content: response.data.assistantMessage?.content || 'Sorry, I could not process your request.',
         isUser: false,
         timestamp: new Date(),
       };
