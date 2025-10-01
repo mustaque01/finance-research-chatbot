@@ -810,6 +810,4 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
-**Made with ❤️ by the Finance Research Team**
-
 *Transform your investment decisions with AI-powered research!*
