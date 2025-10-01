@@ -52,7 +52,7 @@ class Settings(BaseSettings):
     memory_max_tokens: int = int(os.getenv("MEMORY_MAX_TOKENS", "2000"))
     
     # CORS settings
-    cors_origins: List[str] = os.getenv("CORS_ORIGINS", "http://localhost:3000,http://localhost:3001").split(",")
+    cors_origins: List[str] = ["http://localhost:3000", "http://localhost:3001"]
     
     # Logging
     log_level: str = os.getenv("LOG_LEVEL", "info").upper()

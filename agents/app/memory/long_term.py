@@ -63,29 +63,63 @@ class LongTermMemory:
         """Initialize vector database (Pinecone or ChromaDB)"""
         
         # Try Pinecone first
-        if PINECONE_AVAILABLE and settings.pinecone_api_key:
+        if PINECONE_AVAILABLE and settings.pinecone_api_key and settings.pinecone_api_key != "your_pinecone_api_key_here":
             try:
-                pinecone.init(
-                    api_key=settings.pinecone_api_key,
-                    environment=settings.pinecone_environment
-                )
-                
-                # Create or get index
-                index_name = settings.pinecone_index_name
-                if index_name not in pinecone.list_indexes():
-                    pinecone.create_index(
-                        name=index_name,
-                        dimension=384,  # all-MiniLM-L6-v2 dimension
-                        metric="cosine"
+                # Try new Pinecone v3 API first
+                try:
+                    from pinecone import Pinecone
+                    # New v3 API
+                    pc = Pinecone(api_key=settings.pinecone_api_key)
+                    
+                    # Check if index exists
+                    existing_indexes = [index.name for index in pc.list_indexes()]
+                    
+                    if settings.pinecone_index_name not in existing_indexes:
+                        # Create index if it doesn't exist (new v3 API format)
+                        from pinecone import ServerlessSpec
+                        pc.create_index(
+                            name=settings.pinecone_index_name,
+                            dimension=384,
+                            metric="cosine",
+                            spec=ServerlessSpec(
+                                cloud="aws",
+                                region="us-east-1"
+                            )
+                        )
+                        logger.info("Created new Pinecone index", index_name=settings.pinecone_index_name)
+                    
+                    self.vector_db = pc.Index(settings.pinecone_index_name)
+                    
+                except ImportError:
+                    # Fallback to older API
+                    pinecone.init(
+                        api_key=settings.pinecone_api_key,
+                        environment=settings.pinecone_environment or "gcp-starter"
                     )
+                    
+                    # Create or get index
+                    index_name = settings.pinecone_index_name
+                    if index_name not in pinecone.list_indexes():
+                        pinecone.create_index(
+                            name=index_name,
+                            dimension=384,  # all-MiniLM-L6-v2 dimension
+                            metric="cosine"
+                        )
+                    
+                    self.vector_db = pinecone.Index(index_name)
                 
-                self.vector_db = pinecone.Index(index_name)
                 self.vector_db_type = "pinecone"
-                logger.info("✅ Pinecone vector database initialized")
+                logger.info("✅ Pinecone vector database initialized successfully", 
+                           index_name=settings.pinecone_index_name)
                 return
                 
             except Exception as e:
                 logger.warning(f"Pinecone initialization failed: {e}")
+        else:
+            if not PINECONE_AVAILABLE:
+                logger.info("Pinecone client not available")
+            elif not settings.pinecone_api_key or settings.pinecone_api_key == "your_pinecone_api_key_here":
+                logger.info("Pinecone API key not configured")
         
         # Try ChromaDB as fallback
         if CHROMADB_AVAILABLE:
