@@ -12,6 +12,10 @@ A comprehensive AI-powered finance research assistant built with modern web tech
 
 ### 🏠 Homepage
 *Modern landing page with professional design and call-to-action*
+<img width="1920" height="1080" alt="Screenshot 2025-10-01 203528" src="https://github.com/user-attachments/assets/853252f5-59b5-44ae-89c2-9c42d14b2e44" />
+<img width="1920" height="1080" alt="Screenshot 2025-10-01 203539" src="https://github.com/user-attachments/assets/ba35cda1-a28c-4b7a-943d-3af528f7c918" />
+<img width="1920" height="1080" alt="Screenshot 2025-10-01 203550" src="https://github.com/user-attachments/assets/1f77af18-9f1b-43ae-b386-0250c59113ac" />
+
 
 <!-- Add your homepage screenshot here -->
 
