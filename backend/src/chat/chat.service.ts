@@ -21,7 +21,7 @@ export class ChatService {
     private threadsService: ThreadsService,
     private configService: ConfigService,
   ) {
-    this.agentServiceUrl = this.configService.get<string>('AGENT_SERVICE_URL', 'http://agents:8000');
+    this.agentServiceUrl = this.configService.get<string>('AGENT_SERVICE_URL', 'http://localhost:8000');
   }
 
   async sendMessage(userId: string, sendMessageDto: SendMessageDto) {
@@ -49,16 +49,16 @@ export class ChatService {
     // Prepare request to agent service
     const agentRequest = {
       message,
-      threadId,
-      userId,
-      conversationHistory,
+      thread_id: threadId,
+      user_id: userId,
+      conversation_history: conversationHistory,
       metadata,
     };
 
     try {
       // Call agent service
       const response = await axios.post(
-        `${this.agentServiceUrl}/chat/process`,
+        `${this.agentServiceUrl}/api/v1/chat/process`,
         agentRequest,
         {
           headers: {
@@ -76,7 +76,7 @@ export class ChatService {
           threadId,
           role: 'ASSISTANT',
           content: agentResponse.content,
-          thinkingTrace: agentResponse.thinkingTrace,
+          thinkingTrace: agentResponse.thinking_trace || agentResponse.thinkingTrace,
           metadata: JSON.stringify(agentResponse.metadata || {}),
           sources: {
             create: agentResponse.sources?.map((source: any) => ({
@@ -157,16 +157,16 @@ export class ChatService {
 
     const agentRequest = {
       message,
-      threadId,
-      userId,
-      conversationHistory,
+      thread_id: threadId,
+      user_id: userId,
+      conversation_history: conversationHistory,
       metadata: { ...metadata, streaming: true },
     };
 
     try {
       // Stream from agent service
       const response = await axios.post(
-        `${this.agentServiceUrl}/chat/stream`,
+        `${this.agentServiceUrl}/api/v1/chat/stream`,
         agentRequest,
         {
           responseType: 'stream',
