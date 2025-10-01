@@ -109,16 +109,47 @@ body {
 }
 
 /* Input field text visibility fix */
+.MuiTextField-root {
+  background-color: rgba(30, 41, 59, 0.6) !important;
+  border-radius: 8px !important;
+}
+
 .MuiTextField-root input {
-  color: white !important;
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+  font-weight: 500 !important;
+  background-color: transparent !important;
 }
 
 .MuiTextField-root textarea {
-  color: white !important;
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+  font-weight: 500 !important;
+  background-color: transparent !important;
 }
 
 .MuiInputBase-input {
-  color: white !important;
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+  font-weight: 500 !important;
+  background-color: transparent !important;
+}
+
+.MuiOutlinedInput-input {
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+  background-color: transparent !important;
+}
+
+.MuiOutlinedInput-root {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+/* Force text visibility in all input elements */
+input[type="text"], input[type="email"], input[type="password"], textarea {
+  color: #e2e8f0 !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+  background-color: transparent !important;
 }
 
 /* Mobile responsive */

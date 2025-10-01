@@ -290,7 +290,7 @@ export default function ChatPage() {
                 maxRows={4}
                 sx={{
                   '& .MuiOutlinedInput-root': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    backgroundColor: 'rgba(30, 41, 59, 0.8)',
                     borderRadius: 2,
                     '& fieldset': {
                       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -304,17 +304,33 @@ export default function ChatPage() {
                     },
                   },
                   '& .MuiInputBase-input': {
-                    color: 'white !important',
+                    color: '#e2e8f0 !important',
                     fontSize: '16px',
-                    fontWeight: 400,
+                    fontWeight: 500,
                     lineHeight: 1.5,
+                    backgroundColor: 'transparent !important',
                   },
                   '& .MuiInputBase-input::placeholder': {
                     color: 'rgba(255, 255, 255, 0.6) !important',
                     opacity: 1,
                   },
                   '& .MuiInputBase-inputMultiline': {
-                    color: 'white !important',
+                    color: '#e2e8f0 !important',
+                    backgroundColor: 'transparent !important',
+                  },
+                  '& .MuiInputBase-root': {
+                    color: '#e2e8f0 !important',
+                    backgroundColor: 'rgba(30, 41, 59, 0.8) !important',
+                  },
+                  '& input': {
+                    color: '#e2e8f0 !important',
+                    '-webkit-text-fill-color': '#e2e8f0 !important',
+                    backgroundColor: 'transparent !important',
+                  },
+                  '& textarea': {
+                    color: '#e2e8f0 !important',
+                    '-webkit-text-fill-color': '#e2e8f0 !important',
+                    backgroundColor: 'transparent !important',
                   },
                 }}
               />
