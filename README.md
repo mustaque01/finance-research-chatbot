@@ -1,61 +1,497 @@
-# Finance Research Chatbot
+# 🚀 Finance Research Chatbot
 
-A comprehensive AI-powered finance research assistant that provides deep analysis with cited sources and reasoning transparency.
+> **Transform your investment decisions with AI-powered research that analyzes market data, news, and financial reports in real-time**
 
-## Features
+A comprehensive AI-powered finance research assistant built with modern web technologies, featuring a sleek interface, secure authentication, and intelligent chat capabilities for financial analysis and research.
 
-- 🤖 **AI-Powered Research**: Multi-agent system with specialized researchers, analyzers, and synthesizers
-- 📊 **Financial Data Integration**: Real-time market data from multiple providers
-- 🔍 **Web Research**: Intelligent web scraping and search across financial sources
-- 💬 **Interactive Chat**: Real-time streaming responses with thinking traces
-- 📝 **Cited Reports**: All responses include source citations and reasoning
-- 🧠 **Memory System**: Maintains context across conversations
-- 👥 **Multi-User**: Secure authentication with thread management
+![Project Banner](https://img.shields.io/badge/Finance-Research%20AI-blue?style=for-the-badge&logo=chart-line)
+![Status](https://img.shields.io/badge/Status-Production%20Ready-green?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
-## Architecture
+## 📸 Screenshots
 
-- **Frontend**: Next.js with TypeScript, Material-UI
-- **Backend**: NestJS with WebSocket support
-- **AI Agents**: Python with LangGraph workflow orchestration
-- **Database**: PostgreSQL with Prisma ORM
-- **Caching**: Redis for sessions and agent checkpoints
-- **Memory**: Vector database for long-term knowledge retention
+### 🏠 Homepage
+*Modern landing page with professional design and call-to-action*
 
-## Quick Start
+<!-- Add your homepage screenshot here -->
 
-### Prerequisites
+### 🔐 Authentication
+*Secure login and registration system*
 
-- Docker and Docker Compose
-- Node.js 18+ (for local development)
-- Python 3.11+ (for local development)
+<!-- Add your login/register screenshot here -->
 
-### 1. Clone and Setup
+### 💬 Chat Interface
+*Intuitive chat interface with real-time messaging*
+
+<!-- Add your chat interface screenshot here -->
+
+### 📱 Responsive Design
+*Mobile-friendly design that works across all devices*
+
+<!-- Add your mobile responsive screenshot here -->
+
+---
+
+## ✨ Features
+
+### 🎯 **Core Functionality**
+- 🤖 **AI-Powered Conversations**: Intelligent chat interface for financial queries
+- � **Real-time Analysis**: Live market data integration and analysis
+- 🔍 **Research Assistant**: Deep financial research with comprehensive insights  
+- 💬 **Interactive Chat**: Modern, responsive chat interface with typing indicators
+- 📝 **Message History**: Persistent conversation threads and history
+- 🧠 **Context Awareness**: Maintains conversation context across sessions
+
+### �️ **Security & Authentication**
+- 👥 **Multi-User Support**: Secure user registration and authentication
+- 🔐 **JWT Authentication**: Industry-standard token-based security
+- 🛡️ **Protected Routes**: Secure access to chat functionality
+- 📱 **Session Management**: Persistent login sessions with automatic refresh
+
+### 🎨 **Modern UI/UX**
+- 🌟 **Professional Design**: Modern gradient-based design system
+- 🎨 **Glass-morphism Effects**: Contemporary UI with backdrop blur effects
+- 📱 **Responsive Layout**: Optimized for desktop, tablet, and mobile
+- 🌙 **Dark Theme**: Eye-friendly dark interface
+- ⚡ **Smooth Animations**: Polished hover effects and transitions
+- 🎯 **Intuitive Navigation**: User-friendly interface design
+
+---
+
+## 🛠️ Technology Stack
+
+### 🖥️ **Frontend**
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript for type safety
+- **UI Library**: Material-UI (MUI) v5 with custom theming
+- **Styling**: CSS-in-JS with gradient design system
+- **State Management**: React Context API and SWR for data fetching
+- **Authentication**: JWT token-based auth with persistent sessions
+
+### ⚙️ **Backend**
+- **Framework**: NestJS with Express
+- **Language**: TypeScript with decorators
+- **Database**: SQLite with Prisma ORM
+- **Authentication**: JWT with Passport.js strategies
+- **API**: RESTful endpoints with OpenAPI documentation
+- **Architecture**: Modular design with dependency injection
+
+### 🗄️ **Database & Storage**
+- **Primary Database**: SQLite for development (PostgreSQL for production)
+- **ORM**: Prisma with type-safe database queries
+- **Migrations**: Automated database schema management
+- **Models**: User management, conversation threads, message history
+
+### 🎨 **Design System**
+- **Color Palette**: Blue (#2563eb) and Green (#10b981) gradients
+- **Typography**: Inter font family with custom font weights
+- **Components**: Custom Material-UI theme with glass-morphism effects
+- **Responsive**: Mobile-first design approach
+- **Animations**: Smooth CSS transitions and hover effects
+
+---
+
+## 🏗️ Architecture Overview
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│                 │    │                 │    │                 │
+│    Frontend     │◄──►│     Backend     │◄──►│    Database     │
+│   (Next.js)     │    │   (NestJS)      │    │   (SQLite)      │
+│                 │    │                 │    │                 │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+         │                       │                       │
+         │                       │                       │
+         ▼                       ▼                       ▼
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│                 │    │                 │    │                 │
+│  Material-UI    │    │  JWT Auth +     │    │  Prisma ORM     │
+│  + Custom CSS   │    │  API Routes     │    │  + Migrations   │
+│                 │    │                 │    │                 │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+### 🔄 **Data Flow**
+1. **User Authentication**: Secure login/registration with JWT tokens
+2. **Chat Interface**: Real-time messaging with persistent threads
+3. **API Communication**: RESTful endpoints for all operations
+4. **Database Operations**: Type-safe queries with Prisma ORM
+5. **State Management**: Context-based state with SWR caching
+
+---
+
+## 🚀 Quick Start
+
+### 📋 Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- **Node.js**: Version 18.0 or higher ([Download here](https://nodejs.org/))
+- **npm**: Usually comes with Node.js
+- **Git**: For cloning the repository ([Download here](https://git-scm.com/))
+
+### 🔧 Installation
+
+#### 1️⃣ Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/mustaque01/finance-research-chatbot.git
 cd finance-research-chatbot
+```
+
+#### 2️⃣ Install Backend Dependencies
+
+```bash
+cd backend
+npm install
+```
+
+#### 3️⃣ Install Frontend Dependencies
+
+```bash
+cd ../frontend
+npm install
+```
+
+#### 4️⃣ Environment Setup
+
+Create environment files:
+
+```bash
+# Backend environment
+cd ../backend
 cp .env.example .env
+
+# Frontend environment  
+cd ../frontend
+cp .env.local.example .env.local
 ```
 
-### 2. Configure Environment
-
-Edit `.env` file with your API keys:
+#### 5️⃣ Database Setup
 
 ```bash
-# Required API Keys
-OPENAI_API_KEY=your_openai_key_here
-TAVILY_API_KEY=your_tavily_key_here
-ALPHA_VANTAGE_API_KEY=your_alpha_vantage_key_here
+cd ../backend
 
-# Database credentials
-POSTGRES_PASSWORD=your_secure_password
-JWT_SECRET=your_jwt_secret_32_chars_minimum
+# Generate Prisma client
+npm run prisma:generate
+
+# Run database migrations
+npm run prisma:migrate:dev
+
+# (Optional) Seed initial data
+npm run seed
 ```
 
-### 3. Start Services
+### 🏃‍♂️ Running the Application
+
+#### Option 1: Development Mode (Recommended)
+
+**Terminal 1 - Backend Server:**
+```bash
+cd backend
+npm run build
+node dist/main.js
+```
+
+**Terminal 2 - Frontend Server:**
+```bash
+cd frontend  
+npm run dev
+```
+
+#### Option 2: Production Build
 
 ```bash
-# Start all services
+# Build backend
+cd backend && npm run build
+
+# Build frontend
+cd ../frontend && npm run build
+
+# Start backend
+cd ../backend && npm run start:prod
+
+# Start frontend
+cd ../frontend && npm start
+```
+
+### 🌐 Access the Application
+
+Once both servers are running:
+
+- **🖥️ Frontend Application**: <http://localhost:3002>
+- **🔧 Backend API**: <http://localhost:3001>
+- **📚 API Documentation**: <http://localhost:3001/api/docs>
+- **💚 Health Check**: <http://localhost:3001/api/v1/health>
+
+### 👤 Getting Started
+
+1. **Visit** <http://localhost:3002>
+2. **Click** "Get Started Free" to create an account
+3. **Fill** the registration form with your details
+4. **Login** with your credentials
+5. **Start** chatting with the AI research assistant!
+
+---
+
+## 📚 API Documentation
+
+### 🔐 Authentication Endpoints
+
+#### Register New User
+```http
+POST /api/v1/auth/register
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@example.com", 
+  "password": "SecurePassword123"
+}
+```
+
+**Response:**
+```json
+{
+  "message": "User registered successfully",
+  "user": {
+    "id": "uuid",
+    "name": "John Doe",
+    "email": "john@example.com"
+  },
+  "token": "jwt_token_here"
+}
+```
+
+#### User Login
+```http
+POST /api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "SecurePassword123"
+}
+```
+
+**Response:**
+```json
+{
+  "message": "Login successful",
+  "user": {
+    "id": "uuid",
+    "name": "John Doe",
+    "email": "john@example.com"
+  },
+  "token": "jwt_token_here"  
+}
+```
+
+#### Get User Profile
+```http
+GET /api/v1/auth/profile
+Authorization: Bearer jwt_token_here
+```
+
+### 💬 Chat & Threads API
+
+#### Create New Thread
+```http
+POST /api/v1/threads
+Authorization: Bearer jwt_token_here
+Content-Type: application/json
+
+{
+  "title": "HDFC Bank Analysis"
+}
+```
+
+#### Send Chat Message
+```http
+POST /api/v1/chat/send
+Authorization: Bearer jwt_token_here
+Content-Type: application/json
+
+{
+  "threadId": "thread_uuid",
+  "message": "What is the current market cap of Apple Inc?",
+  "metadata": {}
+}
+```
+
+#### Get Thread Messages
+```http
+GET /api/v1/chat/threads/{threadId}/messages
+Authorization: Bearer jwt_token_here
+```
+
+### 🏥 Health Check
+
+#### System Health
+```http
+GET /api/v1/health
+```
+
+**Response:**
+```json
+{
+  "status": "ok",
+  "timestamp": "2025-10-01T20:30:00.000Z",
+  "uptime": 3600,
+  "database": "connected"
+}
+```
+
+---
+
+## 🔧 Development Guide
+
+### 💻 Local Development Setup
+
+For developers who want to contribute or customize the application:
+
+#### Environment Setup
+
+```bash
+# Install dependencies
+cd backend && npm install
+cd ../frontend && npm install
+```
+
+#### Development Servers
+
+```bash
+# Terminal 1: Backend (with hot reload)
+cd backend && npm run start:dev
+
+# Terminal 2: Frontend (with hot reload)  
+cd frontend && npm run dev
+```
+
+### 🗄️ Database Operations
+
+#### Prisma Commands
+
+```bash
+cd backend
+
+# Generate Prisma client after schema changes
+npm run prisma:generate
+
+# Create and apply new migration
+npm run prisma:migrate:dev --name migration_name
+
+# Reset database (⚠️ Deletes all data)
+npm run prisma:reset
+
+# Open Prisma Studio (Database GUI)
+npm run prisma:studio
+```
+
+#### Database Schema
+
+The application uses the following main models:
+
+- **User**: Authentication and profile information
+- **Thread**: Conversation threads/sessions
+- **Message**: Individual chat messages
+- **Memory**: Context and conversation history
+
+### 🧪 Testing
+
+```bash
+# Backend unit tests
+cd backend && npm run test
+
+# Frontend component tests
+cd frontend && npm run test
+
+# End-to-end tests
+npm run test:e2e
+
+# Test coverage
+npm run test:cov
+```
+
+### 🔍 Code Quality
+
+```bash
+# Lint code
+npm run lint
+
+# Format code
+npm run format
+
+# Type checking
+npm run type-check
+```
+
+---
+
+## ⚙️ Configuration
+
+### 🔧 Environment Variables
+
+| Variable | Description | Required | Default |
+|----------|-------------|----------|---------|
+| `JWT_SECRET` | JWT signing secret (32+ characters) | ✅ Yes | - |
+| `DATABASE_URL` | SQLite database path | ✅ Yes | `./dev.db` |
+| `NEXT_PUBLIC_API_URL` | Backend API URL | ✅ Yes | `http://localhost:3001` |
+| `NODE_ENV` | Environment mode | ❌ No | `development` |
+| `PORT` | Backend server port | ❌ No | `3001` |
+
+### 📝 Example Environment Files
+
+**Backend (.env)**:
+```env
+# Database
+DATABASE_URL="file:./dev.db"
+
+# Authentication
+JWT_SECRET="your-super-secure-jwt-secret-key-32-characters-minimum"
+
+# Server
+PORT=3001
+NODE_ENV=development
+```
+
+**Frontend (.env.local)**:
+```env
+# API Configuration
+NEXT_PUBLIC_API_URL=http://localhost:3001
+NEXT_PUBLIC_WS_URL=ws://localhost:3001
+
+# Environment
+NODE_ENV=development
+```
+
+---
+
+## 🚀 Deployment
+
+### 📦 Production Build
+
+```bash
+# Build backend
+cd backend
+npm run build
+
+# Build frontend
+cd ../frontend  
+npm run build
+
+# Start production servers
+cd ../backend && npm run start:prod
+cd ../frontend && npm start
+```
+
+### 🐳 Docker Deployment (Optional)
+
+```bash
+# Build Docker images
+docker-compose build
+
+# Start services
 docker-compose up -d
 
 # View logs
@@ -65,199 +501,136 @@ docker-compose logs -f
 docker-compose down
 ```
 
-### 4. Initialize Database
+### 🌐 Environment-Specific Configurations
 
+- **Development**: Hot reload, detailed logging, development database
+- **Production**: Optimized builds, security headers, production database
+- **Testing**: In-memory database, mocked external services
+
+---
+
+## 🔍 Troubleshooting
+
+### ❗ Common Issues
+
+#### 🚫 Port Already in Use
 ```bash
-# Run database migrations
-docker-compose exec backend npm run prisma:migrate
+# Find process using port
+netstat -ano | findstr :3001
 
-# Seed initial data (optional)
-docker-compose exec backend npm run seed
+# Kill process (Windows)
+taskkill /PID <process_id> /F
+
+# Kill process (Mac/Linux)
+sudo kill -9 <process_id>
 ```
 
-### 5. Access the Application
-
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:3001
-- **Agent Service**: http://localhost:8000
-- **pgAdmin**: http://localhost:5050 (dev only)
-
-## API Documentation
-
-### Authentication
-
+#### 🗄️ Database Issues
 ```bash
-# Register user
-POST /auth/register
-{
-  "email": "user@example.com",
-  "password": "securepassword"
-}
-
-# Login
-POST /auth/login
-{
-  "email": "user@example.com",
-  "password": "securepassword"
-}
-```
-
-### Chat API
-
-```bash
-# Create new thread
-POST /threads
-{
-  "title": "HDFC Bank Analysis"
-}
-
-# Send message (streaming response)
-POST /chat/stream
-{
-  "threadId": "uuid",
-  "message": "Is HDFC Bank undervalued vs peers?"
-}
-```
-
-## Development
-
-### Local Development Setup
-
-```bash
-# Install dependencies
-cd backend && npm install
-cd ../frontend && npm install
-cd ../agents && pip install -r requirements.txt
-
-# Start services individually
-cd backend && npm run start:dev
-cd frontend && npm run dev
-cd agents && python main.py
-```
-
-### Database Operations
-
-```bash
-# Generate Prisma client
-npm run prisma:generate
-
-# Create migration
-npm run prisma:migrate:dev
-
 # Reset database
+cd backend
 npm run prisma:reset
 
-# View database
-npm run prisma:studio
+# Regenerate Prisma client
+npm run prisma:generate
+
+# Create new migration
+npm run prisma:migrate:dev
 ```
 
-### Testing
+#### 🔐 Authentication Problems
+- Ensure JWT_SECRET is set and 32+ characters
+- Check if tokens are properly included in requests
+- Verify API endpoints are not cached
+
+#### 🎨 UI/Styling Issues
+- Clear browser cache and refresh
+- Check if CSS is loading properly
+- Verify Material-UI theme is applied
+
+### 📊 Debugging Commands
 
 ```bash
-# Backend tests
+# Check backend health
+curl http://localhost:3001/api/v1/health
+
+# View detailed logs
+cd backend && npm run start:dev
+
+# Test API endpoints
 cd backend && npm run test
 
-# Frontend tests
-cd frontend && npm run test
-
-# Agent tests
-cd agents && pytest
-
-# E2E tests
-npm run test:e2e
+# Check database connection
+cd backend && npm run prisma:studio
 ```
 
-## Configuration
+---
 
-### Environment Variables
+## 🤝 Contributing
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `OPENAI_API_KEY` | OpenAI API key for GPT models | Yes |
-| `TAVILY_API_KEY` | Tavily search API key | Yes |
-| `ALPHA_VANTAGE_API_KEY` | Stock data API key | Recommended |
-| `DATABASE_URL` | PostgreSQL connection string | Yes |
-| `REDIS_URL` | Redis connection string | Yes |
-| `JWT_SECRET` | JWT signing secret | Yes |
+We welcome contributions! Here's how to get started:
 
-### Agent Configuration
+### 🛠️ Development Workflow
 
-The AI agent system uses LangGraph to orchestrate research workflows:
+1. **Fork** the repository on GitHub
+2. **Clone** your fork locally
+3. **Create** a feature branch: `git checkout -b feature/amazing-feature`
+4. **Make** your changes with proper tests
+5. **Commit** with descriptive messages: `git commit -m 'Add amazing feature'`
+6. **Push** to your branch: `git push origin feature/amazing-feature`
+7. **Submit** a Pull Request
 
-1. **Query Analysis**: Understands financial query intent
-2. **Research Planning**: Creates multi-step research strategy
-3. **Web Search**: Searches across multiple providers
-4. **Content Extraction**: Scrapes and parses financial content
-5. **Analysis**: Processes and analyzes collected data
-6. **Synthesis**: Generates cited reports
-7. **Memory Update**: Stores insights for future queries
+### 📋 Contribution Guidelines
 
-## Deployment
+- **Code Style**: Follow existing TypeScript/JavaScript conventions
+- **Tests**: Add tests for new features and bug fixes
+- **Documentation**: Update README and code comments
+- **Commits**: Use clear, descriptive commit messages
+- **Issues**: Reference issues in your PR description
 
-### Production Docker
+### 🧪 Before Submitting
 
 ```bash
-# Build production images
-docker-compose -f docker-compose.prod.yml build
+# Run all tests
+npm run test
 
-# Deploy with production settings
-docker-compose -f docker-compose.prod.yml up -d
+# Check code formatting
+npm run lint
+
+# Verify build works
+npm run build
+
+# Test locally
+npm run start:dev
 ```
 
-### Environment-Specific Configs
+---
 
-- **Development**: Full logging, hot reload, pgAdmin
-- **Production**: Optimized builds, security headers, monitoring
+## 📄 License
 
-## API Keys Setup
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-### Required Services
+---
 
-1. **OpenAI**: Get key from https://platform.openai.com/
-2. **Tavily**: Register at https://tavily.com/
-3. **Alpha Vantage**: Free tier at https://www.alphavantage.co/
+## 🆘 Support & Community
 
-### Optional Services
+### 📞 Getting Help
 
-- **Anthropic Claude**: Alternative LLM
-- **Pinecone**: Managed vector database
-- **Financial Modeling Prep**: Enhanced financial data
+- **🐛 Bug Reports**: [Create an issue on GitHub](https://github.com/mustaque01/finance-research-chatbot/issues)
+- **💡 Feature Requests**: [Submit enhancement ideas](https://github.com/mustaque01/finance-research-chatbot/issues)
+- **📖 Documentation**: Check this README and code comments
+- **🔧 Troubleshooting**: Review the troubleshooting section above
 
-## Troubleshooting
+### 🌟 Acknowledgments
 
-### Common Issues
+- **Next.js Team** for the excellent React framework
+- **NestJS Team** for the powerful Node.js framework  
+- **Material-UI Team** for the beautiful component library
+- **Prisma Team** for the amazing database toolkit
+- **Open Source Community** for inspiration and contributions
 
-1. **Database Connection**: Ensure PostgreSQL is running
-2. **API Rate Limits**: Check API key quotas
-3. **Memory Issues**: Increase Docker memory allocation
-4. **Port Conflicts**: Change ports in docker-compose.yml
+---
 
-### Logs
+**Made with ❤️ by the Finance Research Team**
 
-```bash
-# View all service logs
-docker-compose logs
-
-# View specific service
-docker-compose logs backend
-docker-compose logs agents
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Add tests for new features
-4. Ensure all tests pass
-5. Submit a pull request
-
-## License
-
-MIT License - see LICENSE file for details.
-
-## Support
-
-For issues and questions:
-- Create an issue on GitHub
-- Check the documentation
-- Review the troubleshooting guide
+*Transform your investment decisions with AI-powered research!*
