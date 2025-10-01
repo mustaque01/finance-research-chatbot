@@ -26,6 +26,8 @@ A comprehensive AI-powered finance research assistant built with modern web tech
 
 ### 💬 Chat Interface
 *Intuitive chat interface with real-time messaging*
+<img width="1920" height="1080" alt="Screenshot 2025-10-01 204759" src="https://github.com/user-attachments/assets/dda59eb5-670e-44ab-a689-463bafb3569b" />
+
 
 <!-- Add your chat interface screenshot here -->
 
