@@ -76,7 +76,7 @@ export class ChatService {
           threadId,
           role: 'ASSISTANT',
           content: agentResponse.content,
-          thinkingTrace: agentResponse.thinking_trace || agentResponse.thinkingTrace,
+          thinkingTrace: JSON.stringify(agentResponse.thinking_trace || agentResponse.thinkingTrace || {}),
           metadata: JSON.stringify(agentResponse.metadata || {}),
           sources: {
             create: agentResponse.sources?.map((source: any) => ({
