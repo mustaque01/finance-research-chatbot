@@ -137,21 +137,24 @@ export default function HomePage() {
             size="large"
             onClick={handleGetStarted}
             sx={{
-              bgcolor: 'rgba(255, 255, 255, 0.9)',
-              color: 'primary.main',
+              bgcolor: 'white',
+              color: '#1a365d',
               px: 4,
               py: 1.5,
-              fontSize: '1rem',
-              fontWeight: 500,
+              fontSize: '1.1rem',
+              fontWeight: 600,
               borderRadius: 2,
               textTransform: 'none',
-              boxShadow: '0 4px 12px rgba(255, 255, 255, 0.15)',
+              border: '2px solid rgba(255, 255, 255, 0.8)',
+              boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15)',
               '&:hover': {
-                bgcolor: 'rgba(255, 255, 255, 0.95)',
-                boxShadow: '0 6px 16px rgba(255, 255, 255, 0.2)',
-                transform: 'translateY(-1px)',
+                bgcolor: '#f8fafc',
+                color: '#0f172a',
+                boxShadow: '0 8px 25px rgba(0, 0, 0, 0.2)',
+                transform: 'translateY(-2px)',
+                border: '2px solid white',
               },
-              transition: 'all 0.2s ease-in-out',
+              transition: 'all 0.3s ease-in-out',
             }}
           >
             Get Started Free
@@ -165,17 +168,18 @@ export default function HomePage() {
               py: 1.5,
               fontSize: '1.1rem',
               fontWeight: 600,
-              borderRadius: 3,
+              borderRadius: 2,
               textTransform: 'none',
               borderWidth: 2,
-              borderColor: 'rgba(255, 255, 255, 0.3)',
+              borderColor: 'rgba(255, 255, 255, 0.6)',
               color: 'white',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
               '&:hover': {
                 borderColor: 'white',
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
                 transform: 'translateY(-2px)',
               },
-              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              transition: 'all 0.3s ease-in-out',
             }}
           >
             Sign In
