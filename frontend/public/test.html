@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .result {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success { background: #d4edda; }
+        .error { background: #f8d7da; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Finance Research Chatbot - API Test</h1>
+    
+    <div>
+        <h2>Service Status</h2>
+        <button onclick="testBackend()">Test Backend (Port 3001)</button>
+        <button onclick="testAgents()">Test Agents (Port 8000)</button>
+        <button onclick="testAuth()">Test Authentication</button>
+        <button onclick="testChat()">Test Chat</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script>
+        function addResult(message, isSuccess = true) {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = `result ${isSuccess ? 'success' : 'error'}`;
+            div.innerHTML = `<strong>${new Date().toLocaleTimeString()}</strong>: ${message}`;
+            results.appendChild(div);
+        }
+
+        async function testBackend() {
+            try {
+                const response = await fetch('http://localhost:3001/health');
+                const data = await response.text();
+                addResult(`Backend Health Check: ${response.status} - ${data}`, response.ok);
+            } catch (error) {
+                addResult(`Backend Error: ${error.message}`, false);
+            }
+        }
+
+        async function testAgents() {
+            try {
+                const response = await fetch('http://localhost:8000/capabilities');
+                const data = await response.json();
+                addResult(`Agents Service: ${response.status} - Available capabilities: ${Object.keys(data).length}`, response.ok);
+            } catch (error) {
+                addResult(`Agents Error: ${error.message}`, false);
+            }
+        }
+
+        async function testAuth() {
+            try {
+                // Test registration
+                const registerResponse = await fetch('http://localhost:3001/api/v1/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: `test${Date.now()}@example.com`,
+                        password: 'testpassword123'
+                    })
+                });
+                
+                if (registerResponse.ok) {
+                    const data = await registerResponse.json();
+                    addResult(`Registration successful! Got token: ${data.accessToken ? 'Yes' : 'No'}`, true);
+                } else {
+                    const error = await registerResponse.text();
+                    addResult(`Registration failed: ${registerResponse.status} - ${error}`, false);
+                }
+            } catch (error) {
+                addResult(`Auth Error: ${error.message}`, false);
+            }
+        }
+
+        async function testChat() {
+            try {
+                // First register to get a token
+                const email = `test${Date.now()}@example.com`;
+                const registerResponse = await fetch('http://localhost:3001/api/v1/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: 'testpassword123'
+                    })
+                });
+                
+                if (!registerResponse.ok) {
+                    addResult('Chat Test: Failed to register user for testing', false);
+                    return;
+                }
+                
+                const authData = await registerResponse.json();
+                const token = authData.accessToken;
+                
+                // Create a thread
+                const threadResponse = await fetch('http://localhost:3001/api/v1/threads', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        title: 'Test Chat'
+                    })
+                });
+                
+                if (!threadResponse.ok) {
+                    addResult('Chat Test: Failed to create thread', false);
+                    return;
+                }
+                
+                const threadData = await threadResponse.json();
+                const threadId = threadData.id;
+                
+                // Send a message
+                const chatResponse = await fetch('http://localhost:3001/api/v1/chat/send', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        message: 'Hello, test message',
+                        threadId: threadId
+                    })
+                });
+                
+                if (chatResponse.ok) {
+                    const chatData = await chatResponse.json();
+                    addResult(`Chat Test: Successfully sent message and got response! Length: ${chatData.response?.length || 'N/A'}`, true);
+                } else {
+                    const error = await chatResponse.text();
+                    addResult(`Chat Test: Failed to send message - ${chatResponse.status} - ${error}`, false);
+                }
+                
+            } catch (error) {
+                addResult(`Chat Test Error: ${error.message}`, false);
+            }
+        }
+
+        // Auto-test on load
+        window.onload = function() {
+            addResult('Starting API tests...', true);
+            setTimeout(testBackend, 500);
+            setTimeout(testAgents, 1000);
+        };
+    </script>
+</body>
+</html>
