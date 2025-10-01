@@ -290,24 +290,31 @@ export default function ChatPage() {
                 maxRows={4}
                 sx={{
                   '& .MuiOutlinedInput-root': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
                     borderRadius: 2,
                     '& fieldset': {
-                      borderColor: 'rgba(255, 255, 255, 0.2)',
+                      borderColor: 'rgba(255, 255, 255, 0.3)',
                     },
                     '&:hover fieldset': {
-                      borderColor: 'rgba(255, 255, 255, 0.3)',
+                      borderColor: 'rgba(255, 255, 255, 0.5)',
                     },
                     '&.Mui-focused fieldset': {
                       borderColor: '#10b981',
+                      borderWidth: '2px',
                     },
                   },
                   '& .MuiInputBase-input': {
-                    color: 'white',
+                    color: 'white !important',
+                    fontSize: '16px',
+                    fontWeight: 400,
+                    lineHeight: 1.5,
                   },
                   '& .MuiInputBase-input::placeholder': {
-                    color: 'rgba(255, 255, 255, 0.5)',
+                    color: 'rgba(255, 255, 255, 0.6) !important',
                     opacity: 1,
+                  },
+                  '& .MuiInputBase-inputMultiline': {
+                    color: 'white !important',
                   },
                 }}
               />

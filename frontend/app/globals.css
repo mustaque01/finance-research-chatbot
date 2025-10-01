@@ -108,6 +108,19 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Input field text visibility fix */
+.MuiTextField-root input {
+  color: white !important;
+}
+
+.MuiTextField-root textarea {
+  color: white !important;
+}
+
+.MuiInputBase-input {
+  color: white !important;
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
   .container {
