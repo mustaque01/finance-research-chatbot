@@ -92,10 +92,10 @@ export default function LoginPage() {
             </Button>
             
             <Box textAlign="center">
-              <Link href="/register" passHref>
-                <MuiLink variant="body2">
+              <Link href="/register">
+                <Typography variant="body2" color="primary" sx={{ cursor: 'pointer', textDecoration: 'underline' }}>
                   Don't have an account? Sign Up
-                </MuiLink>
+                </Typography>
               </Link>
             </Box>
           </Box>
