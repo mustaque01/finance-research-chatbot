@@ -5,7 +5,13 @@ Researcher Agent - Handles web search and content collection
 import asyncio
 from typing import Dict, Any, List
 import aiohttp
-from bs4 import BeautifulSoup
+
+# Try to import BeautifulSoup with fallback
+try:
+    from bs4 import BeautifulSoup
+    BS4_AVAILABLE = True
+except ImportError:
+    BS4_AVAILABLE = False
 
 from app.tools.web_search import WebSearchTool
 from app.tools.web_scraper import WebScraperTool

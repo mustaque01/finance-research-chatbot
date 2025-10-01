@@ -6,10 +6,21 @@ import asyncio
 from typing import Dict, Any, List, TypedDict, Annotated
 from datetime import datetime
 
-from langgraph import Graph, START, END
-from langgraph.graph import StateGraph
-from langgraph.checkpoint.memory import MemorySaver
-from langchain_core.messages import BaseMessage, HumanMessage, AIMessage
+# Import with fallbacks for missing dependencies
+try:
+    from langgraph import Graph, START, END
+    from langgraph.graph import StateGraph
+    from langgraph.checkpoint.memory import MemorySaver
+    from langchain_core.messages import BaseMessage, HumanMessage, AIMessage
+    LANGGRAPH_AVAILABLE = True
+except ImportError as e:
+    print(f"Warning: LangGraph dependencies not available: {e}")
+    LANGGRAPH_AVAILABLE = False
+    # Create fallback classes
+    class TypedDict(dict):
+        pass
+    START = "START"
+    END = "END"
 
 from app.agents.researcher import ResearcherAgent
 from app.agents.analyzer import AnalyzerAgent

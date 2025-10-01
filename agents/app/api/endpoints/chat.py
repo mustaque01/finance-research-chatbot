@@ -10,7 +10,7 @@ from fastapi import APIRouter, HTTPException, BackgroundTasks
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 
-from app.graph import create_research_graph
+from app.simple_workflow import create_research_graph
 from app.core.logging import get_logger
 
 logger = get_logger(__name__)
