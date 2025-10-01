@@ -89,26 +89,35 @@ A comprehensive AI-powered finance research assistant built with modern web tech
 - **Responsive**: Mobile-first design approach
 - **Animations**: Smooth CSS transitions and hover effects
 
+### 🤖 **AI Agents System (Python)**
+- **Framework**: FastAPI with uvicorn server
+- **AI Orchestration**: LangGraph for multi-agent workflows
+- **Language Models**: OpenAI GPT-4, Anthropic Claude integration
+- **Agent Types**: Researcher, Analyzer, Synthesizer specialists
+- **Tools Integration**: Web scraping, financial APIs, data processing
+- **Memory Management**: Persistent context and conversation history
+- **Research Capabilities**: Real-time market data analysis and insights
+
 ---
 
 ## 🏗️ Architecture Overview
 
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│                 │    │                 │    │                 │
-│    Frontend     │◄──►│     Backend     │◄──►│    Database     │
-│   (Next.js)     │    │   (NestJS)      │    │   (SQLite)      │
-│                 │    │                 │    │                 │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-         │                       │                       │
-         │                       │                       │
-         ▼                       ▼                       ▼
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│                 │    │                 │    │                 │
-│  Material-UI    │    │  JWT Auth +     │    │  Prisma ORM     │
-│  + Custom CSS   │    │  API Routes     │    │  + Migrations   │
-│                 │    │                 │    │                 │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
+```text
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│                 │    │                 │    │                 │    │                 │
+│    Frontend     │◄──►│     Backend     │◄──►│   AI Agents     │◄──►│    Database     │
+│   (Next.js)     │    │   (NestJS)      │    │   (Python)      │    │   (SQLite)      │
+│                 │    │                 │    │                 │    │                 │
+└─────────────────┘    └─────────────────┘    └─────────────────┘    └─────────────────┘
+         │                       │                       │                       │
+         │                       │                       │                       │
+         ▼                       ▼                       ▼                       ▼
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│                 │    │                 │    │                 │    │                 │
+│  Material-UI    │    │  JWT Auth +     │    │  LangGraph +    │    │  Prisma ORM     │
+│  + Custom CSS   │    │  API Routes     │    │  Research AI    │    │  + Migrations   │
+│                 │    │                 │    │                 │    │                 │
+└─────────────────┘    └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
 ### 🔄 **Data Flow**
@@ -153,7 +162,14 @@ cd ../frontend
 npm install
 ```
 
-#### 4️⃣ Environment Setup
+#### 4️⃣ Install AI Agents Dependencies (Optional)
+
+```bash
+cd ../agents
+pip install -r requirements.txt
+```
+
+#### 5️⃣ Environment Setup
 
 Create environment files:
 
@@ -165,9 +181,13 @@ cp .env.example .env
 # Frontend environment  
 cd ../frontend
 cp .env.local.example .env.local
+
+# AI Agents environment (if using agents)
+cd ../agents
+cp .env.example .env
 ```
 
-#### 5️⃣ Database Setup
+#### 6️⃣ Database Setup
 
 ```bash
 cd ../backend
@@ -199,6 +219,12 @@ cd frontend
 npm run dev
 ```
 
+**Terminal 3 - AI Agents Service (Optional):**
+```bash
+cd agents
+python -m uvicorn main:app --reload --port 8000
+```
+
 #### Option 2: Production Build
 
 ```bash
@@ -217,11 +243,13 @@ cd ../frontend && npm start
 
 ### 🌐 Access the Application
 
-Once both servers are running:
+Once all servers are running:
 
 - **🖥️ Frontend Application**: <http://localhost:3002>
 - **🔧 Backend API**: <http://localhost:3001>
-- **📚 API Documentation**: <http://localhost:3001/api/docs>
+- **🤖 AI Agents API**: <http://localhost:8000>
+- **📚 Backend API Documentation**: <http://localhost:3001/api/docs>
+- **📚 AI Agents Documentation**: <http://localhost:8000/docs>
 - **💚 Health Check**: <http://localhost:3001/api/v1/health>
 
 ### 👤 Getting Started
@@ -231,6 +259,157 @@ Once both servers are running:
 3. **Fill** the registration form with your details
 4. **Login** with your credentials
 5. **Start** chatting with the AI research assistant!
+
+---
+
+## 🤖 AI Agents System (Python)
+
+The application includes a sophisticated AI agent system built with Python for advanced financial research capabilities.
+
+### 🏗️ **Agent Architecture**
+
+#### **Core Components**
+```text
+┌─────────────────────────────────────────────────────────────┐
+│                    AI Agent Service                          │
+│                     (Python FastAPI)                        │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
+│  │ Researcher  │  │  Analyzer   │  │    Synthesizer      │  │
+│  │   Agent     │  │   Agent     │  │      Agent          │  │
+│  └─────────────┘  └─────────────┘  └─────────────────────┘  │
+├─────────────────────────────────────────────────────────────┤
+│                   LangGraph Orchestration                   │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
+│  │ Web Search  │  │   Memory    │  │     Tools           │  │
+│  │   Tools     │  │  Manager    │  │   Integration       │  │
+│  └─────────────┘  └─────────────┘  └─────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 🚀 **Running AI Agents**
+
+#### **Prerequisites**
+```bash
+# Python 3.11 or higher
+python --version
+
+# Virtual environment (recommended)
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# or
+venv\Scripts\activate     # Windows
+```
+
+#### **Installation**
+```bash
+cd agents
+pip install -r requirements.txt
+```
+
+#### **Environment Setup**
+Create `agents/.env` file:
+```env
+# AI Model Configuration
+OPENAI_API_KEY=your_openai_api_key_here
+ANTHROPIC_API_KEY=your_anthropic_key_here
+
+# Research Tools
+TAVILY_API_KEY=your_tavily_search_key
+ALPHA_VANTAGE_API_KEY=your_alpha_vantage_key
+
+# Service Configuration
+AGENT_PORT=8000
+LOG_LEVEL=INFO
+```
+
+#### **Start Agent Service**
+```bash
+cd agents
+python main.py
+
+# Or with uvicorn directly
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+### 🧠 **Agent Capabilities**
+
+#### **1. Research Agent**
+- **Web Search**: Intelligent search across financial websites
+- **Data Extraction**: Scrapes and processes financial content
+- **Source Verification**: Validates and ranks information sources
+- **Market Data**: Real-time stock prices, news, and analysis
+
+#### **2. Analyzer Agent** 
+- **Financial Analysis**: Technical and fundamental analysis
+- **Trend Detection**: Market patterns and trend identification
+- **Risk Assessment**: Portfolio and investment risk analysis
+- **Comparative Analysis**: Company and sector comparisons
+
+#### **3. Synthesizer Agent**
+- **Report Generation**: Comprehensive research reports
+- **Citation Management**: Proper source attribution
+- **Insight Synthesis**: Combines multiple data sources
+- **Recommendation Engine**: Investment insights and recommendations
+
+### 🔧 **Agent Workflow**
+
+```python
+# Example: Research Workflow
+async def research_workflow(query: str) -> Dict[str, Any]:
+    """
+    1. Query Analysis    → Understand research intent
+    2. Research Planning → Create multi-step strategy  
+    3. Web Search       → Gather information
+    4. Content Analysis → Process and analyze data
+    5. Synthesis        → Generate insights
+    6. Report Creation  → Format final response
+    """
+    pass
+```
+
+### 📊 **Key Features**
+
+- **🔄 Multi-Agent Coordination**: LangGraph orchestrates agent interactions
+- **🧠 Memory Management**: Persistent context across conversations
+- **🔍 Advanced Search**: Multiple search providers and APIs
+- **📈 Real-time Data**: Live market data integration
+- **📝 Cited Research**: All responses include source citations
+- **⚡ Streaming Responses**: Real-time response generation
+- **🔒 Secure API**: JWT authentication and rate limiting
+
+### 🌐 **Agent API Endpoints**
+
+```http
+# Research endpoint
+POST /research
+{
+  "query": "Analyze Apple's Q3 earnings",
+  "thread_id": "uuid",
+  "user_id": "uuid"
+}
+
+# Agent status
+GET /status
+
+# Available tools
+GET /tools
+```
+
+### 🔧 **Development & Testing**
+
+```bash
+# Run agent tests
+cd agents
+pytest tests/
+
+# Test specific agent
+python -m pytest tests/test_researcher.py
+
+# Run with coverage
+pytest --cov=app tests/
+```
 
 ---
 
