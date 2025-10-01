@@ -63,6 +63,8 @@ A comprehensive AI-powered finance research assistant built with modern web tech
 - 🎯 **Intuitive Navigation**: User-friendly interface design
 
 ---
+<img width="1920" height="1080" alt="Screenshot 2025-10-01 232339" src="https://github.com/user-attachments/assets/e7034f64-14f5-4d2a-bc85-e42d7fde7b24" />
+
 
 ## 🛠️ Technology Stack
 
