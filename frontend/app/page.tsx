@@ -137,21 +137,21 @@ export default function HomePage() {
             size="large"
             onClick={handleGetStarted}
             sx={{
-              bgcolor: 'white',
+              bgcolor: 'rgba(255, 255, 255, 0.9)',
               color: 'primary.main',
               px: 4,
               py: 1.5,
-              fontSize: '1.1rem',
-              fontWeight: 600,
-              borderRadius: 3,
+              fontSize: '1rem',
+              fontWeight: 500,
+              borderRadius: 2,
               textTransform: 'none',
-              boxShadow: '0 8px 25px rgba(255, 255, 255, 0.2)',
+              boxShadow: '0 4px 12px rgba(255, 255, 255, 0.15)',
               '&:hover': {
-                bgcolor: 'grey.100',
-                boxShadow: '0 12px 35px rgba(255, 255, 255, 0.3)',
-                transform: 'translateY(-2px)',
+                bgcolor: 'rgba(255, 255, 255, 0.95)',
+                boxShadow: '0 6px 16px rgba(255, 255, 255, 0.2)',
+                transform: 'translateY(-1px)',
               },
-              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              transition: 'all 0.2s ease-in-out',
             }}
           >
             Get Started Free
@@ -371,18 +371,18 @@ export default function HomePage() {
           size="large"
           onClick={handleGetStarted}
           sx={{ 
-            px: 6, 
-            py: 2,
-            fontSize: '1.2rem',
-            fontWeight: 600,
-            borderRadius: 3,
+            px: 5, 
+            py: 1.5,
+            fontSize: '1.1rem',
+            fontWeight: 500,
+            borderRadius: 2,
             textTransform: 'none',
-            boxShadow: '0 8px 25px rgba(37, 99, 235, 0.3)',
+            boxShadow: '0 4px 12px rgba(37, 99, 235, 0.2)',
             '&:hover': {
-              boxShadow: '0 12px 35px rgba(37, 99, 235, 0.4)',
-              transform: 'translateY(-2px)',
+              boxShadow: '0 6px 16px rgba(37, 99, 235, 0.25)',
+              transform: 'translateY(-1px)',
             },
-            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            transition: 'all 0.2s ease-in-out',
           }}
         >
           Start Your Free Trial
