@@ -76,20 +76,62 @@ export default function HomePage() {
       <Box
         sx={{
           textAlign: 'center',
-          py: { xs: 8, md: 12 },
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-          borderRadius: 3,
+          py: { xs: 10, md: 16 },
+          background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%)',
+          borderRadius: 4,
           color: 'white',
-          mb: 8,
+          mb: 12,
+          position: 'relative',
+          overflow: 'hidden',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%)',
+          },
         }}
       >
-        <Typography variant="h2" component="h1" gutterBottom sx={{ fontWeight: 'bold' }}>
-          Finance Research Chatbot
+        <Typography 
+          variant="h1" 
+          component="h1" 
+          gutterBottom 
+          sx={{ 
+            fontWeight: 800,
+            fontSize: { xs: '2.5rem', md: '3.5rem', lg: '4rem' },
+            background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            color: 'transparent',
+            mb: 3,
+            position: 'relative',
+            zIndex: 1,
+          }}
+        >
+          Finance Research AI
         </Typography>
-        <Typography variant="h5" component="h2" gutterBottom sx={{ mb: 4, opacity: 0.9 }}>
-          AI-powered financial research assistant with deep analysis and cited sources
+        <Typography 
+          variant="h4" 
+          component="h2" 
+          gutterBottom 
+          sx={{ 
+            mb: 6, 
+            opacity: 0.95,
+            fontWeight: 400,
+            fontSize: { xs: '1.25rem', md: '1.5rem' },
+            maxWidth: '800px',
+            mx: 'auto',
+            lineHeight: 1.4,
+            position: 'relative',
+            zIndex: 1,
+          }}
+        >
+          Transform your investment decisions with AI-powered research that analyzes market data, 
+          news, and financial reports in real-time
         </Typography>
-        <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
+        <Box sx={{ display: 'flex', gap: 3, justifyContent: 'center', flexWrap: 'wrap', mt: 2 }}>
           <Button
             variant="contained"
             size="large"
@@ -97,28 +139,43 @@ export default function HomePage() {
             sx={{
               bgcolor: 'white',
               color: 'primary.main',
-              '&:hover': {
-                bgcolor: 'grey.100',
-              },
               px: 4,
               py: 1.5,
+              fontSize: '1.1rem',
+              fontWeight: 600,
+              borderRadius: 3,
+              textTransform: 'none',
+              boxShadow: '0 8px 25px rgba(255, 255, 255, 0.2)',
+              '&:hover': {
+                bgcolor: 'grey.100',
+                boxShadow: '0 12px 35px rgba(255, 255, 255, 0.3)',
+                transform: 'translateY(-2px)',
+              },
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             }}
           >
-            Get Started
+            Get Started Free
           </Button>
           <Button
             variant="outlined"
             size="large"
             onClick={handleSignIn}
             sx={{
-              borderColor: 'white',
+              px: 4,
+              py: 1.5,
+              fontSize: '1.1rem',
+              fontWeight: 600,
+              borderRadius: 3,
+              textTransform: 'none',
+              borderWidth: 2,
+              borderColor: 'rgba(255, 255, 255, 0.3)',
               color: 'white',
               '&:hover': {
                 borderColor: 'white',
-                bgcolor: 'rgba(255,255,255,0.1)',
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                transform: 'translateY(-2px)',
               },
-              px: 4,
-              py: 1.5,
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             }}
           >
             Sign In
@@ -127,34 +184,79 @@ export default function HomePage() {
       </Box>
 
       {/* Features Section */}
-      <Box sx={{ mb: 8 }}>
-        <Typography variant="h3" component="h2" textAlign="center" gutterBottom sx={{ mb: 6 }}>
-          Powerful Features
+      <Box sx={{ mb: 12, mt: 12 }}>
+        <Typography 
+          variant="h3" 
+          component="h2" 
+          textAlign="center" 
+          gutterBottom 
+          sx={{ 
+            mb: 8,
+            fontWeight: 700,
+            background: 'linear-gradient(135deg, #2563eb 0%, #10b981 100%)',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            color: 'transparent',
+          }}
+        >
+          Why Choose Our AI Research Platform
         </Typography>
         <Grid container spacing={4}>
           {features.map((feature, index) => (
             <Grid item xs={12} sm={6} md={6} key={index}>
               <Card
-                elevation={2}
+                elevation={0}
                 sx={{
                   height: '100%',
-                  transition: 'transform 0.2s ease-in-out',
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  borderRadius: 3,
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                   '&:hover': {
-                    transform: 'translateY(-4px)',
-                    elevation: 4,
+                    transform: 'translateY(-8px)',
+                    background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%)',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
                   },
                 }}
               >
-                <CardContent sx={{ p: 3 }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                    <Box sx={{ color: 'primary.main', mr: 2 }}>
+                <CardContent sx={{ p: 4 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+                    <Box 
+                      sx={{ 
+                        color: 'white',
+                        mr: 3,
+                        p: 1.5,
+                        background: 'linear-gradient(135deg, #2563eb 0%, #10b981 100%)',
+                        borderRadius: 2,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
                       {feature.icon}
                     </Box>
-                    <Typography variant="h5" component="h3" fontWeight="bold">
+                    <Typography 
+                      variant="h5" 
+                      component="h3" 
+                      sx={{ 
+                        fontWeight: 700,
+                        color: 'white',
+                        fontSize: '1.4rem',
+                      }}
+                    >
                       {feature.title}
                     </Typography>
                   </Box>
-                  <Typography variant="body1" color="text.secondary">
+                  <Typography 
+                    variant="body1" 
+                    sx={{ 
+                      color: 'rgba(255, 255, 255, 0.8)',
+                      fontSize: '1rem',
+                      lineHeight: 1.6,
+                    }}
+                  >
                     {feature.description}
                   </Typography>
                 </CardContent>
@@ -166,22 +268,65 @@ export default function HomePage() {
 
       {/* Demo Section */}
       <Paper
-        elevation={3}
+        elevation={0}
         sx={{
-          p: 4,
+          p: 6,
           textAlign: 'center',
-          bgcolor: 'grey.50',
-          mb: 8,
+          background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          borderRadius: 4,
+          mb: 12,
         }}
       >
-        <Typography variant="h4" component="h2" gutterBottom>
-          Try a Sample Query
+        <Typography 
+          variant="h4" 
+          component="h2" 
+          gutterBottom
+          sx={{
+            fontWeight: 700,
+            mb: 3,
+            background: 'linear-gradient(135deg, #2563eb 0%, #10b981 100%)',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            color: 'transparent',
+          }}
+        >
+          Experience AI-Powered Research
         </Typography>
-        <Typography variant="body1" color="text.secondary" gutterBottom sx={{ mb: 3 }}>
-          "Is HDFC Bank undervalued compared to its peers in the last 2 quarters?"
-        </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
-          Our AI will research across multiple sources, analyze financial data, and provide a comprehensive answer with citations.
+        <Paper
+          elevation={0}
+          sx={{
+            p: 3,
+            mb: 3,
+            background: 'rgba(255, 255, 255, 0.05)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            borderRadius: 2,
+            maxWidth: '600px',
+            mx: 'auto',
+          }}
+        >
+          <Typography 
+            variant="h6" 
+            sx={{ 
+              color: 'white',
+              fontStyle: 'italic',
+              fontWeight: 400,
+            }}
+          >
+            "Is HDFC Bank undervalued compared to its peers in the last 2 quarters?"
+          </Typography>
+        </Paper>
+        <Typography 
+          variant="body1" 
+          sx={{ 
+            color: 'rgba(255, 255, 255, 0.8)',
+            maxWidth: '700px',
+            mx: 'auto',
+            lineHeight: 1.6,
+          }}
+        >
+          Our AI will research across multiple sources, analyze financial data, and provide a comprehensive answer with citations and real-time insights.
         </Typography>
       </Paper>
 
@@ -189,23 +334,58 @@ export default function HomePage() {
       <Box
         sx={{
           textAlign: 'center',
-          py: 6,
-          mb: 4,
+          py: 8,
+          mb: 6,
+          background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%)',
+          borderRadius: 4,
+          border: '1px solid rgba(255, 255, 255, 0.1)',
         }}
       >
-        <Typography variant="h4" component="h2" gutterBottom>
-          Ready to Start Researching?
+        <Typography 
+          variant="h3" 
+          component="h2" 
+          gutterBottom
+          sx={{
+            fontWeight: 700,
+            mb: 2,
+            color: 'white',
+          }}
+        >
+          Ready to Transform Your Research?
         </Typography>
-        <Typography variant="body1" color="text.secondary" gutterBottom sx={{ mb: 3 }}>
+        <Typography 
+          variant="h6" 
+          gutterBottom 
+          sx={{ 
+            mb: 4,
+            color: 'rgba(255, 255, 255, 0.8)',
+            maxWidth: '600px',
+            mx: 'auto',
+            fontWeight: 400,
+          }}
+        >
           Join thousands of investors and analysts using our AI-powered research platform.
         </Typography>
         <Button
           variant="contained"
           size="large"
           onClick={handleGetStarted}
-          sx={{ px: 4, py: 1.5 }}
+          sx={{ 
+            px: 6, 
+            py: 2,
+            fontSize: '1.2rem',
+            fontWeight: 600,
+            borderRadius: 3,
+            textTransform: 'none',
+            boxShadow: '0 8px 25px rgba(37, 99, 235, 0.3)',
+            '&:hover': {
+              boxShadow: '0 12px 35px rgba(37, 99, 235, 0.4)',
+              transform: 'translateY(-2px)',
+            },
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          }}
         >
-          Create Free Account
+          Start Your Free Trial
         </Button>
       </Box>
     </Container>
